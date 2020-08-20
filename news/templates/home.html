@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>post page</title>
+</head>
+<body>
+	
+
+<center>
+	
+	<form action="{% url 'insert' %}" method="post">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<th>title</th>
+				<td><input type="text" name="title"></td>
+			</tr>
+			<tr>
+				<th>author</th>
+				<td><input type="text" name="author"></td>
+			</tr>
+			<tr>
+				<th>content</th>
+				<td><textarea rows="8" cols="50" name="content"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Add records"></td>
+			</tr>
+		</table>
+	</form>
+
+
+
+
+
+	<table border="2px" width="80%">
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Date_of_creation</th>
+		</tr>
+		
+		{% for p in posts %}
+		
+		<tr>
+			<td>{{ p.id }}</td>
+			<td>{{ p.title }}</td>
+			<td>{{ p.author }}</td>
+			<td>{{ p.date_of_creation }}</td>
+		</tr>
+			
+		{% endfor %}
+
+	</table>
+</center>
+
+
+
+</body>
+</html>
